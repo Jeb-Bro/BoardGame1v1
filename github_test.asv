@@ -1,0 +1,22 @@
+clc
+clf
+clear all
+
+% name = ['UR3_',datestr(now,'yyyymmdd')];
+% workspace = [-5 5 -5 5 -0.5 3]; 
+% 
+% L1 = Link('theta', pi,'prismatic','a',0,'alpha',pi/2,'qlim', [-0.8 0], 'offset', 0);
+% L2 = Link('d',0.1519,'a',0,'alpha',pi/2,'qlim',deg2rad([-360 360]), 'offset',0);
+% L3 = Link('d',0,'a',-0.24365,'alpha',0,'qlim', deg2rad([-360 360]), 'offset',0);
+% L4 = Link('d',0,'a',-0.21325,'alpha',0,'qlim', deg2rad([-360 360]), 'offset', 0);
+% L5 = Link('d',0.11235,'a',0,'alpha',pi/2,'qlim',deg2rad([-360 360]),'offset', 0);
+% L6 = Link('d',0.08535,'a',0,'alpha',-pi/2,'qlim',deg2rad([-360,360]), 'offset',0);
+% L7 = Link('d',0.0819,'a',0,'alpha',0,'qlim',deg2rad([-360,360]), 'offset', 0);
+% 
+% q = zeros(1,7);    
+% LinUR3 =  SerialLink([L1 L2 L3 L4 L5 L6 L7],'name',name);    
+% LinUR3.base = LinUR3.base * trotx(deg2rad(90)) * troty(pi/2) *trotz(0); 
+% 
+% LinUR3.plot3d(zeros(1,LinUR3.n),'workspace',workspace)
+
+UR3bot = UR3.

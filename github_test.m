@@ -2,4 +2,4 @@ clc
 clf
 clear all
 
-mdl_puma560.m
+x = 1+1

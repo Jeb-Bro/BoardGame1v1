@@ -1,5 +1,8 @@
 %% Simulation Models
 % Place both Chessboard models on (x,y,z) = (0,0,tableHeight)
+
+hold on
+
 squareSize = 0.0375;
 height = 2.2737*10^-14;
 tableHeight = 0

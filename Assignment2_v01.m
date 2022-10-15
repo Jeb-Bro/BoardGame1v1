@@ -20,23 +20,25 @@ clear all
 startup_rvc;
 
 %% Setup
-workspace = [-1.5 1.5 -1.5 1.5 -0.65 1.5];
-qrea = zeros(1,7);
+workspace = [-1 2 -2 2 -1.5 2];
+qrea = [0 pi/2 -pi/2 0 0 0 0];
+scale1 = 0.4;
 
 %% Call robots
 hold on;
 
-UR5bot = UR5arm;
-Reactorbot = Reactorx200;
+% UR5bot = UR5arm;
+Reactorbot = Reactorx200temp;
 
-%Move robot bases
-UR5bot.model.base = transl([0,0.5,0])* trotz(pi);
-UR5bot.MoveRobot(UR5bot.model.getpos);
-
-% Reactorbot.model.plot(qrea, 'scale', scale1, 'workspace',workspace);
-Reactorbot.model.base = transl([0,-50,0])* trotz(pi);
+%Q3 & Q6 do not move, they're extensions/joint rotations 
+Reactorbot.model.plot(qrea, 'scale', scale1,'noarrow');
+Reactorbot.model.base = transl([0,-0.5,0]) %* trotz(pi);
 Reactorbot.MoveRobot(Reactorbot.model.getpos);
 Reactorbot.model.teach
+
+% %Move robot bases
+% UR5bot.model.base = transl([0,0.5,0])* trotz(pi);
+% UR5bot.MoveRobot(UR5bot.model.getpos);
 
 %% ply files
 % ChessPieces;

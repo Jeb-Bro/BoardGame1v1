@@ -46,20 +46,20 @@ classdef UR5arm < handle
             end
             self.model.delay = 0;
 
-            % Colour 
-            for linkIndex = 0:self.model.n
-                handles = findobj('Tag', self.model.name);
-                h = get(handles,'UserData');
-                try 
-                    h.link(linkIndex+1).Children.FaceVertexCData = [plyData{linkIndex+1}.vertex.red ...
-                                                                  , plyData{linkIndex+1}.vertex.green ...
-                                                                  , plyData{linkIndex+1}.vertex.blue]/255;
-                    h.link(linkIndex+1).Children.FaceColor = 'interp';
-                catch ME_1
-                    disp(ME_1);
-                    continue;
-                end
-            end
+%             % Colour 
+%             for linkIndex = 0:self.model.n
+%                 handles = findobj('Tag', self.model.name);
+%                 h = get(handles,'UserData');
+%                 try 
+%                     h.link(linkIndex+1).Children.FaceVertexCData = [plyData{linkIndex+1}.vertex.red ...
+%                                                                   , plyData{linkIndex+1}.vertex.green ...
+%                                                                   , plyData{linkIndex+1}.vertex.blue]/255;
+%                     h.link(linkIndex+1).Children.FaceColor = 'interp';
+%                 catch ME_1
+%                     disp(ME_1);
+%                     continue;
+%                 end
+%             end
         end
 
         %% Move robot function
@@ -69,12 +69,5 @@ classdef UR5arm < handle
                 drawnow()
             end
         end
-
-%         %% Test the movement of robot
-%         function TestMovement(self)
-%             qTest = rand(1,5);
-%             qTrajectory = jtraj(self.jointDefault,qTest,100);
-%             self.MoveRobot(qTrajectory);
-%         end
     end
 end

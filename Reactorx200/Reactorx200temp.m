@@ -2,7 +2,7 @@ classdef Reactorx200temp < handle
     properties
         model
         name = 'Reactorx200'
-        workspace = [-1 2 -2 2 -1.5 2];
+        workspace = [-1 2 -2 2 -1 2];
 
         % Robot plot options
         plotopts = {'fps',60,'noarrow'};
@@ -25,7 +25,7 @@ classdef Reactorx200temp < handle
             L(3) = Link('d',0,'a',0.050,'alpha',0,'offset',0,'qlim',[-pi/2]);
             L(4) = Link('d',0,'a',0.200,'alpha',0,'offset',0,'qlim',[deg2rad(-108),deg2rad(93)]);
             L(5) = Link('d',0,'a',0.065,'alpha',pi/2,'offset',0,'qlim',[deg2rad(-100),deg2rad(123)]);
-            L(6) = Link('d',0,'a',0,'alpha',pi/2,'offset',pi/2,'qlim',[0]); %rotate the joint for end-effector
+            L(6) = Link('d',0,'a',0,'alpha',pi/2,'offset',pi/2,'qlim',[0]);   %rotate the joint for end-effector
             L(7) = Link('d',0.065,'a',0,'alpha',pi/2,'offset',0,'qlim',[deg2rad(-180),deg2rad(180)]);
             
             self.model = SerialLink(L,'name',self.name);

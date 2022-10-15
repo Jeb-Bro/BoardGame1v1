@@ -2,10 +2,10 @@ classdef UR5arm < handle
     properties
         model
         name = 'UR5bot'
-        workspace = [-1 2 -2 2 -1.5 2];
+        workspace = [-1 2 -2 2 -1 2];
 
         % Robot plot options
-        plotopts = {'fps',60,'noarrow'};
+        plotopts = {'fps',60};
                 
         %default joint settings
         jointDef = [90 0 0 0 0 0]*pi/180;
@@ -46,20 +46,20 @@ classdef UR5arm < handle
             end
             self.model.delay = 0;
 
-%             % Colour 
-%             for linkIndex = 0:self.model.n
-%                 handles = findobj('Tag', self.model.name);
-%                 h = get(handles,'UserData');
-%                 try 
-%                     h.link(linkIndex+1).Children.FaceVertexCData = [plyData{linkIndex+1}.vertex.red ...
-%                                                                   , plyData{linkIndex+1}.vertex.green ...
-%                                                                   , plyData{linkIndex+1}.vertex.blue]/255;
-%                     h.link(linkIndex+1).Children.FaceColor = 'interp';
-%                 catch ME_1
-%                     disp(ME_1);
-%                     continue;
-%                 end
-%             end
+            % Colour 
+            for linkIndex = 0:self.model.n
+                handles = findobj('Tag', self.model.name);
+                h = get(handles,'UserData');
+                try 
+                    h.link(linkIndex+1).Children.FaceVertexCData = [plyData{linkIndex+1}.vertex.red ...
+                                                                  , plyData{linkIndex+1}.vertex.green ...
+                                                                  , plyData{linkIndex+1}.vertex.blue]/255;
+                    h.link(linkIndex+1).Children.FaceColor = 'interp';
+                catch ME_1
+                    disp(ME_1);
+                    continue;
+                end
+            end
         end
 
         %% Move robot function

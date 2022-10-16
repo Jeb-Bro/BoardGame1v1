@@ -27,37 +27,27 @@ scale1 = 0.4;
 hold on;
 
 %% Environment + Chess board& pieces creation 
-% ChessPieces;
+ChessPieces;
 
 %% Call robots
 
-% UR5bot = UR5arm;
-Reactorbot2 = Reactorx200temp;
-% Reactorbot = Reactorx200;
-
-
-
-% Reactorbot.model.base = transl([-0.2,-0.25,0.01]);
-% Reactorbot.MoveRobot(Reactorbot.model.getpos);
-% Reactorbot.model.teach;
-
-%rx200 plot and translate. Q3 & Q6 do not move, they're extensions/joint rotations 
-% Reactorbot2.model.plot(qrx, 'scale', scale1,'noarrow', 'workspace', workspace);
-% Reactorbot2.model.base = transl([0,0,0.01]);
-% Reactorbot2.MoveRobot(Reactorbot2.model.getpos);
-Reactorbot2.model.teach;
-
-
+UR5bot = UR5arm;
+i5bot = AUBOi5;
 
 % UR5 plot and translate
-% UR5bot.model.base = transl([0,0.5,-0.03]);
-% UR5bot.MoveRobot(UR5bot.model.getpos);
+UR5bot.model.base = transl([0,0.5,-0.03]);
+UR5bot.MoveRobot(UR5bot.model.getpos);
 % UR5bot.model.teach;
+
+% i5 plot and translate
+i5bot.model.base = transl([0,-0.5,-0.03]);
+i5bot.MoveRobot(UR5bot.model.getpos);
+i5bot.model.teach;
 
 %% Change workplace view 
 xlim([-1.5 1.5])
-ylim([-1 1.5])
-zlim([-0.5 1.4])
+ylim([-1.5 1.5])
+zlim([-0.1 1])
 
 %% Movement tests
 % x1 = 0;
@@ -130,7 +120,7 @@ zlim([-0.5 1.4])
 %     end
 % end
 
-%% rx200 RMRC test
+%% i5 RMRC test
 % qPick = [60 111 -90 -59.9 -49.1 0 50]*pi/180;
 % 
 % T1 = Reactorbot.model.fkine(Reactorbot.model.getpos);

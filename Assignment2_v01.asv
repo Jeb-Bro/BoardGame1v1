@@ -33,21 +33,18 @@ hold on;
 
 % UR5bot = UR5arm;
 Reactorbot2 = Reactorx200temp;
-% Reactorbot = Reactorx200;
+Reactorbot = Reactorx200;
 
-
-
-% Reactorbot.model.base = transl([-0.2,-0.25,0.01]);
-% Reactorbot.MoveRobot(Reactorbot.model.getpos);
-% Reactorbot.model.teach;
 
 %rx200 plot and translate. Q3 & Q6 do not move, they're extensions/joint rotations 
-% Reactorbot2.model.plot(qrx, 'scale', scale1,'noarrow', 'workspace', workspace);
-% Reactorbot2.model.base = transl([0,0,0.01]);
-% Reactorbot2.MoveRobot(Reactorbot2.model.getpos);
+Reactorbot2.model.plot(qrx, 'scale', scale1,'noarrow', 'workspace', workspace);
+Reactorbot.model.base = transl([-0.2,-0.25,0.01]);
+Reactorbot.MoveRobot(Reactorbot.model.getpos);
+Reactorbot.model.teach;
+
+Reactorbot2.model.base = transl([-0.2,-0.25,0.01]);
+Reactorbot2.MoveRobot(Reactorbot2.model.getpos);
 Reactorbot2.model.teach;
-
-
 
 % UR5 plot and translate
 % UR5bot.model.base = transl([0,0.5,-0.03]);

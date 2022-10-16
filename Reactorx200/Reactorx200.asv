@@ -21,30 +21,21 @@ classdef Reactorx200 < handle
             self.CreateModel();
             self.PlotAndColourRobot();
             
-%             self.model.animate(self.jointDef)
+            self.model.animate(self.jointDef)
             
             self.CreateGripperModel();
             self.PlotandColourGripper();
         end
         %% DH Parameters
         function CreateModel(self)
-%             L(1) = Link('d',0,'a',0,'alpha',0,'offset',0,'qlim',[0]);
-%             L(2) = Link('d',0.065,'a',0,'alpha',0,'offset',0,'qlim',[deg2rad(-180),deg2rad(180)]);
-%             L(3) = Link('d',0,'a',0,'alpha',0,'offset',0,'qlim',[deg2rad(0),deg2rad(113)]);
-%             L(4) = Link('d',0,'a',0.050,'alpha',0,'offset',0,'qlim',[-pi/2]);  %Doesn't move
-%             L(5) = Link('d',0,'a',0.200,'alpha',0,'offset',0,'qlim',[deg2rad(-108),deg2rad(93)]);
-%             L(6) = Link('d',0,'a',0.065,'alpha',pi/2,'offset',0,'qlim',[deg2rad(-100),deg2rad(123)]);
-%             L(7) = Link('d',0,'a',0,'alpha',pi/2,'offset',pi/2,'qlim',[0]);   %rotate the joint for end-effector
-%             L(8) = Link('d',0.065,'a',0,'alpha',pi/2,'offset',0,'qlim',[deg2rad(-180),deg2rad(180)]);
-
-            L(1) = Link('d',0,'a',0,'alpha',0,'offset',0,'qlim',[0]);
-            L(2) = Link('d',0.065,'a',0,'alpha',pi/2,'offset',0,'qlim',[deg2rad(-180),deg2rad(180)]);
-            L(3) = Link('d',0,'a',0.2,'alpha',0,'offset',0,'qlim',[deg2rad(0),deg2rad(113)]);
+            L(1) = Link('theta', pi,'prismatic','a',0,'alpha',pi/2,'qlim',[0], 'offset', 0);
+            L(2) = Link('d',0.10391,'a',0,'alpha',pi/2,'offset',0,'qlim',[deg2rad(-180),deg2rad(180)]);
+            L(3) = Link('d',0,'a',0.200,'alpha',0,'offset',0,'qlim',[deg2rad(-108),deg2rad(113)]);
             L(4) = Link('d',0,'a',0.050,'alpha',0,'offset',0,'qlim',[-pi/2]);  %Doesn't move
             L(5) = Link('d',0,'a',0.200,'alpha',0,'offset',0,'qlim',[deg2rad(-108),deg2rad(93)]);
             L(6) = Link('d',0,'a',0.065,'alpha',pi/2,'offset',0,'qlim',[deg2rad(-100),deg2rad(123)]);
-            L(7) = Link('d',0,'a',0,'alpha',pi/2,'offset',pi/2,'qlim',[0]);   %rotate the joint for end-effector
-%             L(8) = Link('d',0.065,'a',0,'alpha',pi/2,'offset',0,'qlim',[deg2rad(-180),deg2rad(180)]);
+%             L(6) = Link('d',0,'a',0,'alpha',pi/2,'offset',pi/2,'qlim',[0]);   %rotate the joint for end-effector
+%             L(7) = Link('d',0.065,'a',0,'alpha',pi/2,'offset',0,'qlim',[deg2rad(-180),deg2rad(180)]);
             
             self.model = SerialLink(L,'name',self.name);
         end       
@@ -56,7 +47,7 @@ classdef Reactorx200 < handle
                 self.model.points{linkIndex+1} = vertexData;
             end
 
-            for linkIndex = 5:7
+            for linkIndex = 5:6
                 [faceData, vertexData, plyData{linkIndex+1} ] = plyread(['rx200_',num2str(linkIndex),'.PLY'],'tri'); %#ok<AGROW>
                 self.model.faces{linkIndex+1} = faceData;
                 self.model.points{linkIndex+1} = vertexData;

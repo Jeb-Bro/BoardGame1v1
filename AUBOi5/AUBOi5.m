@@ -34,7 +34,7 @@ classdef AUBOi5 < handle
         %% Plot and Colour Robot
         function PlotAndColourRobot(self)
             for linkIndex = 0:self.model.n
-                [faceData, vertexData, plyData{linkIndex+1} ] = plyread(['UR5Link',num2str(linkIndex),'.ply'],'tri'); %#ok<AGROW>
+                [faceData, vertexData, plyData{linkIndex+1} ] = plyread(['AUBO-i5 LINK',num2str(linkIndex),'.ply'],'tri'); %#ok<AGROW>
                 self.model.faces{linkIndex+1} = faceData;
                 self.model.points{linkIndex+1} = vertexData;
             end

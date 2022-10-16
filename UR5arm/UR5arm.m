@@ -8,7 +8,10 @@ classdef UR5arm < handle
         plotopts = {'fps',60};
                 
         %default joint settings
-        jointDef = [90 0 0 0 0 0]*pi/180;
+        jointDef = [90 0 0 0 0 0 0]*pi/180;
+        
+        modelGripper
+        gripperTr = trotx(pi/2) * troty(pi/2) *trotz(0);
     end
 
     methods
@@ -17,6 +20,7 @@ classdef UR5arm < handle
             self.CreateModel();
             self.PlotAndColourRobot();
             self.model.animate(self.jointDef)
+            
         end
 
         %% DH Parameters
@@ -27,7 +31,7 @@ classdef UR5arm < handle
             L(4) = Link('d',0.093,'a',0,'alpha',-pi/2,'offset',-pi/2,'qlim',[deg2rad(-360),deg2rad(360)]);
             L(5) = Link('d',0.093,'a',0,'alpha',-pi/2,'offset',0,'qlim',[deg2rad(-360),deg2rad(360)]);
             L(6) = Link('d',0,'a',0,'alpha',0,'offset',0,'qlim',[deg2rad(-360),deg2rad(360)]);
-
+            L(7) = Link('d',0.1056+0.052,'a',0,'alpha',0,'offset',0,'qlim',[0]);
             self.model = SerialLink(L,'name',self.name);
         end
 
@@ -61,7 +65,7 @@ classdef UR5arm < handle
                 end
             end
         end
-
+        
         %% Move robot function
         function MoveRobot(self,qTrajectory)
             for i=1:numrows(qTrajectory)

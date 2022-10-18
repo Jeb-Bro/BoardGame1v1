@@ -10,5 +10,8 @@ Reactorx 200 specs + other
 - https://www.trossenrobotics.com/reactorx-200-robot-arm.aspx#specifications
 - https://www.trossenrobotics.com/docs/interbotix_xsarms/specifications/rx200.html
 
+Gripper
+- https://robotiq.com/products/hand-e-adaptive-robot-gripper
+
 
 Source control Github: https://www.youtube.com/watch?v=O7A27uMduo0

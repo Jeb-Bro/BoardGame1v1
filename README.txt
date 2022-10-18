@@ -12,6 +12,8 @@ Reactorx 200 specs + other
 
 Gripper
 - https://robotiq.com/products/hand-e-adaptive-robot-gripper
+- https://assets.robotiq.com/website-assets/support_documents/document/Hand-E_20191031.pdf
+- https://blog.robotiq.com/hubfs/Fingertips_bundle_EN_2021-09.pdf
 
 
 Source control Github: https://www.youtube.com/watch?v=O7A27uMduo0

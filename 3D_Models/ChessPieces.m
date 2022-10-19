@@ -30,10 +30,15 @@ zOffChessboard = tableHeight;
 for i = 1:8
     
     % Pawns
-    wPawn = PlaceObject('wPawn.ply', [xPos(i), yPos(2),zOnChessboard]);
+% wPawn = PlaceObject('wPawn.ply', [xPos(i), yPos(2),zOnChessboard]);
+
+%% White Pawn Placement Test Code   
+    wPawn(i) = whitePawn;
+    wPawn(i).model.base = transl([xPos(i),yPos(2),zOnChessboard]); %* trotz(pi);
+    wPawn(1,i).model.plot(0.046, 'noarrow', 'nobase', 'nojoints', 'notiles', 'nowrist')
+
     bPawn = PlaceObject('bPawn.ply', [xPos(i), yPos(7),zOnChessboard]);
     
-    wPawnPosMatrix(i,:) = [xPos(i), yPos(2),zOnChessboard]
     
     % Rooks
     if i == 1 || i == 8

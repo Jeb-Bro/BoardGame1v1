@@ -8,10 +8,9 @@ classdef UR5arm < handle
         plotopts = {'fps',60};
                 
         %default joint settings
-        jointDef = [90 0 0 0 0 0 0]*pi/180;
+        jointDef = [90 0 90 0 -90 0 0]*pi/180;
         
         modelGripper
-%         gripperTr = trotx(pi/2) * troty(pi/2);
         gripper1Tr = transl([-0.02,0,0]);
         gripper2Tr = transl([0.02,0,0]);
     end
@@ -21,12 +20,11 @@ classdef UR5arm < handle
         function self = UR5arm(option)
             self.CreateModel();
             self.PlotAndColourRobot();
-            self.model.animate(self.jointDef)
+            self.model.animate(self.jointDef);
 
             self.GripperModel();
             self.PlotandColourGripper();
 %             self.MoveGripper(0);
-
         end
 
             %% DH Parameters
@@ -160,7 +158,7 @@ classdef UR5arm < handle
 %             end
 %         end
 
-        %% Move robot function
+        %% Function to move UR5 + Updates gripper location to move with arm
         function MoveRobot(self,qTrajectory)
             for i=1:numrows(qTrajectory)
                 self.model.animate(qTrajectory(i,:));

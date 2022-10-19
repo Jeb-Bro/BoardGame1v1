@@ -24,6 +24,23 @@ clear all;
 % workspace = [-1 2 -2 2 -1 2];
 % qrx = [0 0 0 -pi/2 0 0 0 0];
 % scale1 = 0.4;
+
+squareSize = 0.0375;
+height = 2.2737*10^-14;
+tableHeight = 0;
+    
+% Chess Pos Matrix
+xPosMatrix = zeros(8,1);
+yPosMatrix = zeros(8,1);
+
+for j = 1
+    for i = -7:2:7
+    xPosMatrix(j) = i*squareSize*0.5;
+    yPosMatrix(j) = i*squareSize*0.5;
+    j = j+1;
+    end
+end
+    
 hold on;
 
 %% Environment + Chess board & pieces creation 
@@ -35,16 +52,23 @@ ChessPieces;
 UR5bot = UR5arm;
 i5bot = AUBOi5;
 
-% UR5 plot and translate
+% UR5 translate base
 UR5bot.model.base = transl([-0.3,0.4,-0.03]);
 UR5bot.MoveRobot(UR5bot.model.getpos);
 % UR5bot.model.teach;
 % UR5bot.modelGripper{1}.teach
 
-% i5 plot and translate
+% i5 translate base
 i5bot.model.base = transl([0.3,-0.4,-0.03]);
 i5bot.MoveRobot(i5bot.model.getpos);
 % i5bot.model.teach;
+
+% blackbishop translate base
+% piece_Type = 'bBishop';
+% piece_pose = transl([xPosMatrix(3), yPosMatrix(1),0]);
+% piece_Color = [0,0,0]/255;
+% blackbishop = blackbish([piece_Type,'.ply'],piece_pose,piece_Color);
+
 
 %% Change workplace view 
 xlim([-1.5 1.5]);
@@ -55,25 +79,37 @@ zlim([-0.65 1]);
 % ylim([0.4 0.6])
 % zlim([0.8 1.1])
 
+% xlim([-0.2 0.2]);
+% ylim([-0.2 0.2]);
+% zlim([-0.1 0.1]);
+
 %% UR5 RMRC function test
+objectTr = transl(0,0,0);
 steps = 50;
 UR5jd= [90 0 90 0 -90 0 0]*pi/180;
 i5jd = [-90 0 90 0 -90 0 0]*pi/180;
 
-qPick = [133 0 129 40 270 43.2 0]*pi/180; % Change this to chess location 
-RMRC(UR5bot,qPick,steps);
-pause(1);
-
-qPick = UR5jd % Change this to chess location 
-RMRC(UR5bot,qPick,steps);
-pause(1);
+% qPick = [133 0 129 40 270 43.2 0]*pi/180; % Change this to chess location 
+% RMRC(UR5bot,qPick,steps,blackbishop,objectTr);
+% pause(1);
+% 
+% 
+% qPick = UR5jd; % Change this to chess location 
+% RMRC(UR5bot,qPick,steps,blackbishop,objectTr);
+% pause(1);
+% 
+% poseCurrent = UR5bot.model.fkine(UR5bot.model.getpos);
+% poseAboveVeggie_Dobot = UR5bot.model.fkine(UR5jd);
+% pointCurrent = poseCurrent(1:3,4);
+% pointFinal = poseAboveVeggie_Dobot(1:3,4);
+% error_displacement = norm(pointFinal - pointCurrent);
 
 qPick = [-44.5 -7 125 42 -90 45 0]*pi/180;
 RMRC(i5bot,qPick,steps);
 pause(1);
-
-qPick = i5jd;
-RMRC(i5bot,qPick,steps);
-pause(1);
+% 
+% qPick = i5jd;
+% RMRC(i5bot,qPick,steps);
+% pause(1);
 
 

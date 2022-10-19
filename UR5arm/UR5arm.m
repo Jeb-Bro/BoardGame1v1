@@ -24,7 +24,6 @@ classdef UR5arm < handle
 
             self.GripperModel();
             self.PlotandColourGripper();
-%             self.MoveGripper(0);
         end
 
             %% DH Parameters
@@ -42,7 +41,7 @@ classdef UR5arm < handle
         %% Plot and Colour Robot
         function PlotAndColourRobot(self)
             for linkIndex = 0:self.model.n
-                [faceData, vertexData, plyData{linkIndex+1} ] = plyread(['UR5Link',num2str(linkIndex),'.ply'],'tri'); %#ok<AGROW>
+                [faceData, vertexData, plyData{linkIndex+1} ] = plyread(['UR5Link',num2str(linkIndex),'.ply'],'tri');
                 self.model.faces{linkIndex+1} = faceData;
                 self.model.points{linkIndex+1} = vertexData;
             end
@@ -131,32 +130,6 @@ classdef UR5arm < handle
             self.modelGripper{2}.animate(self.modelGripper{2}.getpos());
         end
         
-        %% Function to open/close gripper
-%         function MoveGripper(self,gripperPos)
-%             
-%             %limit the input angle for gripper
-%             if gripperPos > 0.059 || gripperPos < -0.059
-%             gripperPos = 0;
-%             end
-% 
-%             % current position (angle in rad) of the gripper
-%             pos1 = self.modelGripper{1}.getpos;
-%             pos2 = self.modelGripper{2}.getpos;
-% 
-%             steps = 20;
-%             % trajectory for finger 1
-%             q1 = lspb(pos1,gripperPos,steps);
-% 
-%             % trajectory for finger 2
-%             q2 = lspb(pos2,-gripperPos,steps);
-% 
-%             % move gripper's fingers by created trajectory
-%             for i =1:steps
-%                 self.modelGripper{1}.animate(q1(i,:));
-%                 self.modelGripper{2}.animate(q2(i,:));
-%                 drawnow()
-%             end
-%         end
 
         %% Function to move UR5 + Updates gripper location to move with arm
         function MoveRobot(self,qTrajectory)

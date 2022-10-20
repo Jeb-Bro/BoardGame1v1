@@ -5,18 +5,14 @@ function RMRC(robot,endPose,steps)
     % robot
     % poseFinal: desired final pose
     % steps
-    % piece: name of piece, i.e. blackBishop
-    % objectTr: object's transform seen by the robot
 
-    timestep = 0.05; % Discrete time step
+    timestep = 0.05; % Discrete timestep
      
     % current pose + pose to go to
     currentpos = robot.model.fkine(robot.model.getpos);
     gotopose = robot.model.fkine(endPose);
     
     T = trinterp(currentpos,gotopose,linspace(0,1,steps)); %interpolate waypoints
-    
-    objectTr = eye(4);
     
     % track the trajectory by RRMC
     for i = 1:steps-1

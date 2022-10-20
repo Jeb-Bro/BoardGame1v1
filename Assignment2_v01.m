@@ -86,25 +86,29 @@ zlim([-0.65 1]);
 % zlim([-0.1 0.1]);
 
 %% UR5 Scenario 1 test
-objectTr = transl(0,0,0);
+% objectTr = transl(0,0,0);
 steps = 50;
 UR5jd= [90 0 90 0 -90 0 0]*pi/180;
 i5jd = [-90 0 90 0 -90 0 0]*pi/180;
-
+% 
 wQueen1CurrentPose = Scenario1.wQueen1.base
 wQueen1EndPose = transl([xPosMatrix(2), yPosMatrix(4),0])
-
-% W_mid = AUBOi5.model.ikine(transl(xPos(6), yPos(2), zOnChessboard+0.1), W_srt, [1, 1, 1, 1, 0, 1]); add transl before w1QueenCurrentPose or w1QueenEndPose
-
-q1 = UR5bot.model.ikcon(UR5bot.model.fkine(UR5bot.model.getpos))
+% 
+% qPick = [-79.1 38.1 -73.9 158 -90 198 0]*pi/180;
+% 
+q = zeros(1,7)
+% q1 = UR5bot.model.ikine(wQueen1CurrentPose, q, [1,1,1,1,1,1]);
+% q1 = UR5bot.model.ikcon(UR5bot.model.fkine(UR5bot.model.getpos))
 q2 = UR5bot.model.ikcon(wQueen1CurrentPose)
 q3 = UR5bot.model.ikcon(wQueen1EndPose)
-
+% 
+% 
 RMRC(UR5bot,q2,steps);
-pause(1);
+pause(0.5);
 
-% RMRC(UR5bot,q3,steps);
-% display('Press enter to continue');
-% pause;
+RMRC(UR5bot,q3,steps);
+Scenario1.wQueen1.base = UR5bot.model.fkine(UR5bot.model.getpos);
+Scenario1.MovewQueen1(UR5bot.model.getpos);
+pause(0.5);
 
 % RMRC(UR5bot,q1,steps);

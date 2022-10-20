@@ -24,6 +24,7 @@ classdef UR5arm < handle
 
             self.GripperModel();
             self.PlotandColourGripper();
+            
         end
 
             %% DH Parameters

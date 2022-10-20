@@ -158,7 +158,7 @@ classdef ChessScenario1 < handle
             end  
         end
         
-        %% Piece Functions
+        %% Piece Prameters
         function GetwQueen1(self)
             name = 'wQueen1';
             L1 = Link('alpha',0,'a',0,'d',0,'offset',0);

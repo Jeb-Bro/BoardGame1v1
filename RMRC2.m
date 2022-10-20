@@ -1,7 +1,7 @@
     %% RMRC function for chess 1v1
     
     
-function RMRC(robot,endPose,steps)
+function RMRC2(robot,endPose,steps)
     % robot
     % poseFinal: desired final pose
     % steps

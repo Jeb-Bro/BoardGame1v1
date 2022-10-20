@@ -45,12 +45,13 @@ hold on;
 
 %% Environment + Chess board & pieces creation 
 ChessEnvironment();
-ChessPieces;
+% ChessPieces;
 
 %% Call robots
 
 UR5bot = UR5arm;
-i5bot = AUBOi5;
+% i5bot = AUBOi5;
+Scenario1 = ChessScenario1;
 
 % UR5 translate base
 UR5bot.model.base = transl([-0.3,0.4,-0.03]);
@@ -59,15 +60,16 @@ UR5bot.MoveRobot(UR5bot.model.getpos);
 % UR5bot.modelGripper{1}.teach
 
 % i5 translate base
-i5bot.model.base = transl([0.3,-0.4,-0.03]);
-i5bot.MoveRobot(i5bot.model.getpos);
+% i5bot.model.base = transl([0.3,-0.4,-0.03]);
+% i5bot.MoveRobot(i5bot.model.getpos);
 % i5bot.model.teach;
 
 % blackbishop translate base
-piece_Type = 'bBishop';
-piece_pose = transl([xPosMatrix(3), yPosMatrix(1),0]);
-piece_Color = [0,0,0]/255;
-blackbishop = blackbish([piece_Type,'.ply'],piece_pose,piece_Color);
+% piece_Type = 'bBishop';
+% piece_pose = transl([xPosMatrix(3), yPosMatrix(1),0]);
+% piece_Color = [0,0,0]/255;
+% blackbishop = blackbish([piece_Type,'.ply'],piece_pose,piece_Color);
+
 
 
 %% Change workplace view 
@@ -89,27 +91,15 @@ steps = 50;
 UR5jd= [90 0 90 0 -90 0 0]*pi/180;
 i5jd = [-90 0 90 0 -90 0 0]*pi/180;
 
-qPick = [133 0 129 40 270 43.2 0]*pi/180; % Change this to chess location 
-RMRC(UR5bot,qPick,steps,blackbishop,objectTr);
-pause(1);
-% 
-% 
-qPick = UR5jd; % Change this to chess location 
-RMRC(UR5bot,qPick,steps,blackbishop,objectTr);
-pause(1);
-% 
-% poseCurrent = UR5bot.model.fkine(UR5bot.model.getpos);
-% poseAboveVeggie_Dobot = UR5bot.model.fkine(UR5jd);
-% pointCurrent = poseCurrent(1:3,4);
-% pointFinal = poseAboveVeggie_Dobot(1:3,4);
-% error_displacement = norm(pointFinal - pointCurrent);
+currentPiecePose = Scenario1.wQueen1.base;
+currentPieceEndPose = transl([xPosMatrix(2), yPosMatrix(4),0]);
 
-% qPick = [-44.5 -7 125 42 -90 45 0]*pi/180;
-% RMRC(i5bot,qPick,steps);
-% pause(1);
-% 
-% qPick = i5jd;
-% RMRC(i5bot,qPick,steps);
-% pause(1);
+qPick = [133 0 129 40 270 43.2 0]*pi/180; % Change this to chess location 
+RMRC(UR5bot,qPick,steps,Scenario1,objectTr);
+pause(1);
+
+qPick = UR5jd; % Change this to chess location 
+RMRC(UR5bot,qPick,steps,Scenario1,objectTr);
+pause(1);
 
 

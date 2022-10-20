@@ -10,6 +10,9 @@ classdef ChessScenario1 < handle
 
         workspace = [-1 2 -2 2 -1 2];
         
+        squareSize = 0.0375;
+        height = 2.2737*10^-14;
+        tableHeight = 0;  
     end
 
     methods%% Class for Shape robot simulation
@@ -26,21 +29,6 @@ classdef ChessScenario1 < handle
 
         %% Plot and Colour Pieces
         function PlotAndColourRobot(self)
-            % Chess Pos Matrix
-            xPosMatrix = zeros(8,1);
-            yPosMatrix = zeros(8,1);
-            squareSize = 0.0375;
-            height = 2.2737*10^-14;
-            tableHeight = 0;  
-
-            for j = 1
-                for i = -7:2:7
-                xPosMatrix(j) = i*squareSize*0.5;
-                yPosMatrix(j) = i*squareSize*0.5;
-                j = j+1;
-                end
-            end      
-            
             %Queens
             wQueen1Index = self.wQueen1.n;
             [ faceData, vertexData, plyData1{wQueen1Index+1} ] = plyread('wQueen.ply','tri'); %#ok<AGROW>
@@ -58,16 +46,15 @@ classdef ChessScenario1 < handle
                 camlight
             end
             self.wQueen1.delay = 0;
-            self.wQueen1.base = transl([xPosMatrix(2),yPosMatrix(2),0]); % Move to default pos
-            self.MovewQueen1(self.wQueen1.getpos);
+            self.wQueen1.base = transl([-0.3,0.4,-0.03]);
+            UR5bot.MoveRobot(UR5bot.model.getpos);
 
             self.wQueen2.plot3d(zeros(1,self.wQueen2.n),'noarrow','workspace',self.workspace);
             if isempty(findobj(get(gca,'Children'),'Type','Light'))
                 camlight
             end
             self.wQueen2.delay = 0;
-            self.wQueen2.base = transl([xPosMatrix(1),yPosMatrix(3),0]); % Move to default pos
-            self.MovewQueen2(self.wQueen2.getpos);    
+            
             
             % Kings
             bKingIndex = self.bKing.n;
@@ -86,16 +73,12 @@ classdef ChessScenario1 < handle
                 camlight
             end
             self.bKing.delay = 0;
-            self.bKing.base = transl([xPosMatrix(5),yPosMatrix(4),0]); % Move to default pos
-            self.MovebKing(self.bKing.getpos); 
 
             self.wKing.plot3d(zeros(1,self.wKing.n),'noarrow','workspace',self.workspace);
             if isempty(findobj(get(gca,'Children'),'Type','Light'))
                 camlight
             end
             self.wKing.delay = 0;
-            self.wKing.base = transl([xPosMatrix(5),yPosMatrix(1),0]); % Move to default pos
-            self.MovewKing(self.wKing.getpos); 
 
             %Colour wqueen1
             for wQueen1Index = 0:self.wQueen1.n
@@ -184,34 +167,12 @@ classdef ChessScenario1 < handle
             self.wKing = SerialLink(L1, 'name', name);
         end
         
-         %% Functions to move pieces
-         %wQueen1
+         %% Function to move UR5 + Updates gripper location to move with arm
         function MovewQueen1(self,qTrajectory)
             for i=1:numrows(qTrajectory)
-                self.wQueen1.animate(qTrajectory(i,:));
+                self.model.animate(qTrajectory(i,:));
                 drawnow()
             end
-        end
-         %wQueen2
-        function MovewQueen2(self,qTrajectory)
-            for i=1:numrows(qTrajectory)
-                self.wQueen2.animate(qTrajectory(i,:));
-                drawnow()
-            end
-        end       
-         %bKing
-        function MovebKing(self,qTrajectory)
-            for i=1:numrows(qTrajectory)
-                self.bKing.animate(qTrajectory(i,:));
-                drawnow()
-            end
-        end       
-         %wKing
-        function MovewKing(self,qTrajectory)
-            for i=1:numrows(qTrajectory)
-                self.wKing.animate(qTrajectory(i,:));
-                drawnow()
-            end
-        end       
+        end          
     end    
 end

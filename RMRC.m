@@ -57,7 +57,7 @@ function RMRC(robot,endPose,steps,piece,objectTr)
             error_disp = norm(gotopose(1:3,4) - currentPose(1:3,4));
             disp(['Current error is ',num2str(1000* error_disp),'mm.']);
             
-            piece.UpdateBish(currentPose*objectTr);      % Move Piece CHANGE TO BE GLOBAL VARIABLE
+            piece.MovewQueen1(currentPose*objectTr);      % Move Piece CHANGE TO BE GLOBAL VARIABLE
             
         end
     end

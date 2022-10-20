@@ -163,7 +163,6 @@ classdef ChessScenario1 < handle
             name = 'wQueen1';
             L1 = Link('alpha',0,'a',0,'d',0,'offset',0);
             self.wQueen1 = SerialLink(L1, 'name', name);
-            GetwQueen1.model.base = transl([-0.3,0.4,-0.03]);
         end
 
         function GetwQueen2(self)

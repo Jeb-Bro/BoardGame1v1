@@ -91,18 +91,25 @@ steps = 50;
 UR5jd= [90 0 90 0 -90 0 0]*pi/180;
 i5jd = [-90 0 90 0 -90 0 0]*pi/180;
 
-wQueen1EndPose = transl([xPosMatrix(2), yPosMatrix(4),0])
+q1 = UR5bot.model.ikcon(UR5bot.model.fkine(UR5bot.model.getpos))
+q2 = 
 wQueen1CurrentPose = Scenario1.wQueen1.base
+wQueen1EndPose = transl([xPosMatrix(2), yPosMatrix(4),0])
 
 q1 = UR5bot.model.ikcon(UR5bot.model.fkine(UR5bot.model.getpos))
-q2 = UR5bot.model.ikcon(wQueen1CurrentPose)
-q3 = UR5bot.model.ikcon(wQueen1EndPose)
- 
-RMRC(UR5bot,q2,steps);
-pause(1);
- 
-RMRC(UR5bot,q3,steps);
-pause(1);
+wQueen1EndPose = transl([xPosMatrix(2), yPosMatrix(4),0])               % Define a translation matrix  
+q2 = LinUR3.ikcon(T2)                                      % Use inverse kinematics to get the joint angles
+qMatrix = jtraj(q1,q2,steps);
 
-RMRC(UR5bot,q1,steps);
-pause(1);
+% wQueen1fkinePose = Scenario1.wQueen1.fkine(wQueen1CurrentPose);
+% wQueen1fkineEndPose = Scenario1.wQueen1.fkine(wQueen1EndPose);
+
+% qPick = [133 0 129 40 270 43.2 0]*pi/180; % Change this to chess location 
+% RMRC(UR5bot,qPick,steps);
+% pause(1);
+
+% qPick = UR5jd; % Change this to chess location 
+% RMRC(UR5bot,qPick,steps);
+% pause(1);
+
+

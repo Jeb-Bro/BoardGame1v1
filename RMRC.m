@@ -1,7 +1,7 @@
     %% RMRC function for chess 1v1
     
     
-function RMRC(robot,endPose,steps,piece,objectTr)
+function RMRC(robot,endPose,steps)
     % robot
     % poseFinal: desired final pose
     % steps
@@ -56,9 +56,6 @@ function RMRC(robot,endPose,steps,piece,objectTr)
             currentPose = robot.model.fkine(robot.model.getpos);
             error_disp = norm(gotopose(1:3,4) - currentPose(1:3,4));
             disp(['Current error is ',num2str(1000* error_disp),'mm.']);
-            
-            piece.MovewQueen1(currentPose*objectTr);      % Move Piece CHANGE TO BE GLOBAL VARIABLE
-            
         end
     end
 end

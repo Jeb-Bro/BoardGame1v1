@@ -49,6 +49,45 @@ xlim([-1.5 1.5])
 ylim([-1.5 1.5])
 zlim([-0.1 1])
 
+%% UR5 Scenario 1 test
+objectTr = transl(0,0,0);
+steps = 50;
+UR5jd= [90 0 90 0 -90 0 0]*pi/180;
+i5jd = [-90 0 90 0 -90 0 0]*pi/180;
+
+wQueen1CurrentPose = Scenario1.wQueen1.base
+wQueen1EndPose = transl([xPos(2), yPos(4),0])
+
+% W_mid = AUBOi5.model.ikine(transl(xPos(6), yPos(2), zOnChessboard+0.1), W_srt, [1, 1, 1, 1, 0, 1]); add transl before w1QueenCurrentPose or w1QueenEndPose
+
+
+
+q1 = UR5bot.model.getpos
+
+T1 = UR5bot.model.fkine(q1)
+
+
+q2 = UR5bot.model.ikcon(transl([xPos(2), yPos(2), 0.1])*trotx(pi)*trotz(pi))
+T2 = UR5bot.model.fkine(q2)
+
+
+
+
+
+q3 = UR5bot.model.ikcon(transl([xPos(2), yPos(4), 0.1])*trotx(pi)*trotz(pi))
+
+%% RMRC
+
+
+RMRC(UR5bot,q2,steps);
+
+
+RMRC(UR5bot,q3,steps);
+
+
+
+RMRC(UR5bot,q1,steps);
+
 %% Movement tests
 % x1 = 0;
 % y1 = 0;

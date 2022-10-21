@@ -87,14 +87,14 @@ classdef AUBOi5 < handle
         function PlotandColourGripper(self)
             % Finger 1:
             for linkIndex = 1:self.modelGripper{3}.n
-                [faceData, vertexData, plyData{linkIndex+1}] = plyread(['Gripper1_',num2str(linkIndex),'.PLY'],'tri');
+                [faceData, vertexData, plyData{linkIndex+1}] = plyread(['Gripper3_',num2str(linkIndex),'.PLY'],'tri');
                 self.modelGripper{3}.faces{linkIndex+1} = faceData;
                 self.modelGripper{3}.points{linkIndex+1} = vertexData;
             end
 
             % Finger 2:
             for linkIndex = 1:self.modelGripper{4}.n
-                [faceData, vertexData, plyData{linkIndex+1}] = plyread(['Gripper2_',num2str(linkIndex),'.PLY'],'tri');
+                [faceData, vertexData, plyData{linkIndex+1}] = plyread(['Gripper4_',num2str(linkIndex),'.PLY'],'tri');
                 self.modelGripper{4}.faces{linkIndex+1} = faceData;
                 self.modelGripper{4}.points{linkIndex+1} = vertexData;
             end

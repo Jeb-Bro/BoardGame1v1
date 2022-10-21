@@ -7,7 +7,6 @@ camlight;
 squareSize = 0.0375;
 height = 2.2737*10^-14;
 tableHeight = 0;
-wPawn(i) = whitePawn;
 zOnChessboard = height + tableHeight;
 zOffChessboard = tableHeight;
     

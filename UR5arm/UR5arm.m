@@ -123,7 +123,7 @@ classdef UR5arm < handle
         end
         
         %% Update the gripper position by the robot's end joint
-        function UpdateGripper(self)
+        function UpdateGripper1(self)
             self.modelGripper{1}.base = self.model.fkine(self.model.getpos)* self.gripper1Tr;
             self.modelGripper{2}.base = self.model.fkine(self.model.getpos)* self.gripper2Tr;
 
@@ -136,7 +136,7 @@ classdef UR5arm < handle
         function MoveRobot(self,qTrajectory)
             for i=1:numrows(qTrajectory)
                 self.model.animate(qTrajectory(i,:));
-                self.UpdateGripper();
+                self.UpdateGripper1();
                 drawnow()
             end
         end

@@ -59,13 +59,13 @@ UR5bot = UR5arm;
 i5bot = AUBOi5;
 
 % UR5 translate base
-UR5bot.model.base = transl([-0.3,0.4,-0.03]);
+UR5bot.model.base = transl([-0.4,0.3,-0.03]);
 UR5bot.MoveRobot(UR5bot.model.getpos);
 % UR5bot.model.teach;
 % UR5bot.modelGripper{1}.teach
 
 % i5 translate base
-i5bot.model.base = transl([0.3,-0.4,-0.03]);
+i5bot.model.base = transl([0.4,-0.3,-0.03]);
 i5bot.MoveRobot(i5bot.model.getpos);
 % i5bot.model.teach;
 
@@ -79,14 +79,6 @@ i5bot.MoveRobot(i5bot.model.getpos);
 xlim([-1.5 1.5]);
 ylim([-1.5 1.5]);
 zlim([-0.65 1]);
-
-% xlim([-0.6 -0.2])
-% ylim([0.4 0.6])
-% zlim([0.8 1.1])
-
-% xlim([-0.2 0.2]);
-% ylim([-0.2 0.2]);
-% zlim([-0.1 0.1]);
 
 %% UR5 Scenario 1 test
 Scenario1 = ChessScenario1;
@@ -114,11 +106,11 @@ Scenario1.MovewQueen1(Scenario1.wQueen1.getpos);
 RMRC(UR5bot,UR5jd,steps);
 
 % Black Move 
-bKingCurrentPose = transl([xPosMatrix(5), yPosMatrix(4), ChessHeight])
-bKingEndPose = transl([xPosMatrix(4), yPosMatrix(5),ChessHeight])
+bKingCurrentPose = transl([xPosMatrix(5), yPosMatrix(4), ChessHeight]);
+bKingEndPose = transl([xPosMatrix(4), yPosMatrix(5),ChessHeight]);
 
-q1 = i5bot.model.ikcon(bKingCurrentPose*trotx(pi)*trotz(pi))
-q2 = i5bot.model.ikcon(bKingEndPose*trotx(pi)*trotz(pi))
+q1 = i5bot.model.ikcon(bKingCurrentPose*trotx(pi)*trotz(pi));
+q2 = i5bot.model.ikcon(bKingEndPose*trotx(pi)*trotz(pi));
 
 RMRC(i5bot,q1,steps);
 

@@ -58,35 +58,127 @@ i5jd = [-90 0 90 0 -90 0 0]*pi/180;
 wQueen1CurrentPose = Scenario1.wQueen1.base
 wQueen1EndPose = transl([xPos(2), yPos(4),0])
 
-% W_mid = AUBOi5.model.ikine(transl(xPos(6), yPos(2), zOnChessboard+0.1), W_srt, [1, 1, 1, 1, 0, 1]); add transl before w1QueenCurrentPose or w1QueenEndPose
+ChessHeight = 0.1;
 
+i5bot.model.delay = 0.01;
 
+    %% Move 1
 
 q1 = UR5bot.model.getpos
+T1 = transl([xPos(2), yPos(2), ChessHeight])*trotx(pi)*trotz(pi)
 
-T1 = UR5bot.model.fkine(q1)
+q2 = UR5bot.model.ikcon(T1)
+T2 = transl([xPos(2), yPos(4), ChessHeight])*trotx(pi)*trotz(pi)
+
+q3 = UR5bot.model.ikcon(T2)
+
+q4 = i5bot.model.getpos
+T4 = transl([xPos(5), yPos(4), ChessHeight])*trotx(pi)*trotz(pi)
+
+q5 = i5bot.model.ikcon(T4)
+T5 = transl([xPos(4), yPos(5), ChessHeight])*trotx(pi)*trotz(pi)
+
+q6 = i5bot.model.ikcon(T5)
+
+RMRC(UR5bot,q2,steps);
+RMRC(UR5bot,q3,steps);
+RMRC(UR5bot,q1,steps);
+
+RMRC(i5bot,q5,steps);
+RMRC(i5bot,q6,steps);
+RMRC(i5bot,q4,steps);
 
 
-q2 = UR5bot.model.ikcon(transl([xPos(2), yPos(2), 0.1])*trotx(pi)*trotz(pi))
-T2 = UR5bot.model.fkine(q2)
+    %% Move 2
+q1 = UR5bot.model.getpos
+T1 = transl([xPos(1), yPos(3), ChessHeight])*trotx(pi)*trotz(pi)
 
+q2 = UR5bot.model.ikcon(T1)
+T2 = transl([xPos(1), yPos(5), ChessHeight])*trotx(pi)*trotz(pi)
 
+q3 = UR5bot.model.ikcon(T2)
 
+q4 = i5bot.model.getpos
+T4 = transl([xPos(4), yPos(5), ChessHeight])*trotx(pi)*trotz(pi)
 
+q5 = i5bot.model.ikcon(T4)
+T5 = transl([xPos(3), yPos(6), ChessHeight])*trotx(pi)*trotz(pi)
 
-q3 = UR5bot.model.ikcon(transl([xPos(2), yPos(4), 0.1])*trotx(pi)*trotz(pi))
+q6 = i5bot.model.ikcon(T5)
 
-%% RMRC
+RMRC(UR5bot,q2,steps);
+RMRC(UR5bot,q3,steps);
+RMRC(UR5bot,q1,steps);
+
+RMRC(i5bot,q5,steps);
+RMRC(i5bot,q6,steps);
+RMRC(i5bot,q4,steps);
+
+    %% Move 3
+q1 = UR5bot.model.getpos
+T1 = transl([xPos(2), yPos(4), ChessHeight])*trotx(pi)*trotz(pi)
+
+q2 = UR5bot.model.ikcon(T1)
+T2 = transl([xPos(2), yPos(6), ChessHeight])*trotx(pi)*trotz(pi)
+
+q3 = UR5bot.model.ikcon(T2)
+
+q4 = i5bot.model.getpos
+T4 = transl([xPos(3), yPos(6), ChessHeight])*trotx(pi)*trotz(pi)
+
+q5 = i5bot.model.ikcon(T4)
+T5 = transl([xPos(4), yPos(7), ChessHeight])*trotx(pi)*trotz(pi)
+
+q6 = i5bot.model.ikcon(T5)
+
+RMRC(UR5bot,q2,steps);
+RMRC(UR5bot,q3,steps);
+RMRC(UR5bot,q1,steps);
+
+RMRC(i5bot,q5,steps);
+RMRC(i5bot,q6,steps);
+RMRC(i5bot,q4,steps);
+
+    %% Move 4
+q1 = UR5bot.model.getpos
+T1 = transl([xPos(1), yPos(5), ChessHeight])*trotx(pi)*trotz(pi)
+
+q2 = UR5bot.model.ikcon(T1)
+T2 = transl([xPos(1), yPos(7), ChessHeight])*trotx(pi)*trotz(pi)
+
+q3 = UR5bot.model.ikcon(T2)
+
+q4 = i5bot.model.getpos
+T4 = transl([xPos(4), yPos(7), ChessHeight])*trotx(pi)*trotz(pi)
+
+q5 = i5bot.model.ikcon(T4)
+T5 = transl([xPos(3), yPos(8), ChessHeight])*trotx(pi)*trotz(pi)
+
+q6 = i5bot.model.ikcon(T5)
+
+RMRC(UR5bot,q2,steps);
+RMRC(UR5bot,q3,steps);
+RMRC(UR5bot,q1,steps);
+
+RMRC(i5bot,q5,steps);
+RMRC(i5bot,q6,steps);
+RMRC(i5bot,q4,steps);
+
+    %% Move 4
+q1 = UR5bot.model.getpos
+T1 = transl([xPos(2), yPos(6), ChessHeight])*trotx(pi)*trotz(pi)
+
+q2 = UR5bot.model.ikcon(T1)
+T2 = transl([xPos(2), yPos(8), ChessHeight])*trotx(pi)*trotz(pi)
+
+q3 = UR5bot.model.ikcon(T2)
 
 
 RMRC(UR5bot,q2,steps);
-
-
 RMRC(UR5bot,q3,steps);
-
-
-
 RMRC(UR5bot,q1,steps);
+
+display('Checkmate! White Wins')
 
 %% Movement tests
 % x1 = 0;

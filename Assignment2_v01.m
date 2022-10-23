@@ -29,13 +29,15 @@
 % pause;
 
 %% Setup
+tic
+
 clc;
 clf;
 clear all;
 squareSize = 0.0375;
 height = 2.2737*10^-14;
 tableHeight = 0;
-    
+   
 % Chess Pos Matrix
 xPosMatrix = zeros(8,1);
 yPosMatrix = zeros(8,1);
@@ -71,7 +73,7 @@ i5bot.MoveRobot(i5bot.model.getpos);
 
 %% GUI Start
 
-ChessGUI = Chess_GUI();
+ChessGUI = Chess_GUI;
 
 %% Change workplace view 
 xlim([-1.5 1.5]);
@@ -84,31 +86,33 @@ zlim([-0.65 1]);
 % Default Joint states
 UR5jd= [90 0 90 0 -90 0 0]*pi/180;
 i5jd = [-90 0 90 0 -90 0 0]*pi/180;
-steps = 25;
+steps = 30;
 
-Scenario = 1;
-EStopCheck(ChessGUI)
+Scenario = 3;
+% EStopCheck(ChessGUI.ESTOPButton.Value)
 switch Scenario
     case 1
-        Scenario1 = ChessScenario1
+        Scenario1 = ChessScenario1;
         ChessScenario1_Moves
-        go = go+1;
+
     case 2
-        Scenario2 = ChessScenario2
+        Scenario2 = ChessScenario2;
         ChessScenario2_Moves
-        go = go+1;
+
     case 3
-        Scenario3 = ChessScenario1
+        Scenario3 = ChessScenario1;
         ChessScenario3_Moves
-        go = go+1;
+
 end
+
+timeElasped = toc/60;
 
 
 %% Check estop status
-function EStopCheck(ChessGUI)
-    while ChessGUI.ESTOPButton.Value == 0
-        if ChessGUI.ESTOPButton.Value == 1
-            break;
-        end
-    end
-end
+% function EStopCheck(ChessGUI)
+%     while ChessGUI.ESTOPButton.Value == 0
+%         if ChessGUI.ESTOPButton.Value == 1
+%             break;
+%         end
+%     end
+% end

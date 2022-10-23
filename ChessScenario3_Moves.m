@@ -18,8 +18,8 @@ for z=1
         z=0;
     end
     RMRC(UR5bot,q2,steps);
-    Scenario1.wQueen1.base = transl([xPosMatrix(2), yPosMatrix(4),0]);
-    Scenario1.MovewQueen1(Scenario1.wQueen1.getpos);
+    Scenario3.wQueen1.base = transl([xPosMatrix(2), yPosMatrix(4),0]);
+    Scenario3.MovewQueen1(Scenario3.wQueen1.getpos());
     collisionDect; %Collision Detect break
     if x == 1
         z=0;
@@ -42,8 +42,8 @@ for z=1
     end
 
     RMRC(i5bot,q2,steps);
-    Scenario1.bKing.base = transl([xPosMatrix(4), yPosMatrix(5),0]);
-    Scenario1.MovebKing(Scenario1.bKing.getpos);
+    Scenario3.bKing.base = transl([xPosMatrix(4), yPosMatrix(5),0]);
+    Scenario3.MovebKing(Scenario3.bKing.getpos());
     if x == 1
         z=0;
     end

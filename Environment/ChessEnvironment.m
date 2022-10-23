@@ -36,8 +36,8 @@ function ChessEnvironment(~)
     PlaceObject('barrier1.ply',[-2,-1,floor]);
     
     %% Curtain
-    PlaceObject('Curtain.ply',[0,-0.55,itemtableheight]);
-    PlaceObject('Curtain.ply',[0,0.55,itemtableheight]);
+    PlaceObject('Curtain.ply',[0,-0.52,itemtableheight]);
+    PlaceObject('Curtain.ply',[0,0.57,itemtableheight]);
     
     %% Concrete floor + Wallpaper
     surf([-3,-3;3,3],[-3,3;-3,3],[-0.64,-0.64;-0.64,-0.64],'CData',imread('concrete.jpg'),'FaceColor','texturemap');

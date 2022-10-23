@@ -1,6 +1,5 @@
-    %% RMRC function for chess 1v1
-    
-    
+%% RMRC function for chess 1v1
+ 
 function RMRC(robot,endPose,steps)
     % robot
     % poseFinal: desired final pose
@@ -35,7 +34,7 @@ function RMRC(robot,endPose,steps)
             poseNext = robot.model.fkine(qNext); % IK solution for invalid qNext
             qNext = robot.model.ikcon(poseNext,robot.model.getpos);
         end
-
+        
         % move to final pose
         if i == steps - 1
             currentPose = robot.model.fkine(robot.model.getpos);
@@ -45,13 +44,8 @@ function RMRC(robot,endPose,steps)
             % if error>10mm, correct position then move it 
             if error_disp > 0.010
                 qCorrect = jtraj(robot.model.getpos,endPose,steps);
-                robot.MoveRobot(qCorrect); 
+                robot.MoveRobot(qCorrect);          
             end
-
-            % write final error in cmd window
-            currentPose = robot.model.fkine(robot.model.getpos);
-            error_disp = norm(gotopose(1:3,4) - currentPose(1:3,4));
-            disp(['Current error is ',num2str(1000* error_disp),'mm.']);
         end
     end
 end

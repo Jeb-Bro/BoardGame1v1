@@ -1,3 +1,4 @@
+clf;
 hold on;
 squareSize = 0.0375;
 height = 2.2737*10^-14;

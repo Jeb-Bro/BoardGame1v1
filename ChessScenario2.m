@@ -91,16 +91,16 @@ classdef ChessScenario2 < handle
         %% Plot and Colour Pieces
         function PlotAndColourRobot(self)
             % Chess Pos Matrix
-            xPos = zeros(8,1);
-            yPos = zeros(8,1);
+            xPosMatrix = zeros(8,1);
+            yPosMatrix = zeros(8,1);
             squareSize = 0.0375;
             height = 2.2737*10^-14;
             tableHeight = 0;  
 
             for j = 1
                 for i = -7:2:7
-                xPos(j) = i*squareSize*0.5;
-                yPos(j) = i*squareSize*0.5;
+                xPosMatrix(j) = i*squareSize*0.5;
+                yPosMatrix(j) = i*squareSize*0.5;
                 j = j+1;
                 end
             end      
@@ -153,7 +153,7 @@ classdef ChessScenario2 < handle
                 camlight
             end
             self.wPawn1.delay = 0;
-            self.wPawn1.base = transl([xPos(1),yPos(2),0]); % Move to default pos
+            self.wPawn1.base = transl([xPosMatrix(1),yPosMatrix(2),0]); % Move to default pos
             self.MovewPawn1(self.wPawn1.getpos);
                 
                 % White Pawn 2
@@ -162,7 +162,7 @@ classdef ChessScenario2 < handle
                 camlight
             end
             self.wPawn2.delay = 0;
-            self.wPawn2.base = transl([xPos(2),yPos(2),0]); % Move to default pos
+            self.wPawn2.base = transl([xPosMatrix(2),yPosMatrix(2),0]); % Move to default pos
             self.MovewPawn2(self.wPawn2.getpos);    
                 
                 % White Pawn 3
@@ -171,7 +171,7 @@ classdef ChessScenario2 < handle
                 camlight
             end
             self.wPawn3.delay = 0;
-            self.wPawn3.base = transl([xPos(3),yPos(2),0]); % Move to default pos
+            self.wPawn3.base = transl([xPosMatrix(3),yPosMatrix(2),0]); % Move to default pos
             self.MovewPawn3(self.wPawn3.getpos);
                 
                 % White Pawn 4
@@ -180,7 +180,7 @@ classdef ChessScenario2 < handle
                 camlight
             end
             self.wPawn4.delay = 0;
-            self.wPawn4.base = transl([xPos(4),yPos(2),0]); % Move to default pos
+            self.wPawn4.base = transl([xPosMatrix(4),yPosMatrix(2),0]); % Move to default pos
             self.MovewPawn4(self.wPawn4.getpos);    
             
                 % White Pawn 5
@@ -189,7 +189,7 @@ classdef ChessScenario2 < handle
                 camlight
             end
             self.wPawn5.delay = 0;
-            self.wPawn5.base = transl([xPos(5),yPos(2),0]); % Move to default pos
+            self.wPawn5.base = transl([xPosMatrix(5),yPosMatrix(2),0]); % Move to default pos
             self.MovewPawn5(self.wPawn5.getpos);
                 
                 % White Pawn 6
@@ -198,7 +198,7 @@ classdef ChessScenario2 < handle
                 camlight
             end
             self.wPawn6.delay = 0;
-            self.wPawn6.base = transl([xPos(6),yPos(2),0]); % Move to default pos
+            self.wPawn6.base = transl([xPosMatrix(6),yPosMatrix(2),0]); % Move to default pos
             self.MovewPawn6(self.wPawn6.getpos);    
                 
                 % White Pawn 7
@@ -207,7 +207,7 @@ classdef ChessScenario2 < handle
                 camlight
             end
             self.wPawn7.delay = 0;
-            self.wPawn7.base = transl([xPos(7),yPos(2),0]); % Move to default pos
+            self.wPawn7.base = transl([xPosMatrix(7),yPosMatrix(2),0]); % Move to default pos
             self.MovewPawn7(self.wPawn7.getpos);
                 
                 % White Pawn 8
@@ -216,7 +216,7 @@ classdef ChessScenario2 < handle
                 camlight
             end
             self.wPawn8.delay = 0;
-            self.wPawn8.base = transl([xPos(8),yPos(2),0]); % Move to default pos
+            self.wPawn8.base = transl([xPosMatrix(8),yPosMatrix(2),0]); % Move to default pos
             self.MovewPawn8(self.wPawn8.getpos);  
             
             % Black Pawns
@@ -267,7 +267,7 @@ classdef ChessScenario2 < handle
                 camlight
             end
             self.bPawn1.delay = 0;
-            self.bPawn1.base = transl([xPos(1),yPos(7),0]); % Move to default pos
+            self.bPawn1.base = transl([xPosMatrix(1),yPosMatrix(7),0]); % Move to default pos
             self.MovebPawn1(self.wPawn1.getpos);
                 
                 % Black Pawn 2
@@ -276,7 +276,7 @@ classdef ChessScenario2 < handle
                 camlight
             end
             self.bPawn2.delay = 0;
-            self.bPawn2.base = transl([xPos(2),yPos(7),0]); % Move to default pos
+            self.bPawn2.base = transl([xPosMatrix(2),yPosMatrix(7),0]); % Move to default pos
             self.MovebPawn2(self.bPawn2.getpos);    
                 
                 % Black Pawn 3
@@ -285,7 +285,7 @@ classdef ChessScenario2 < handle
                 camlight
             end
             self.bPawn3.delay = 0;
-            self.bPawn3.base = transl([xPos(3),yPos(7),0]); % Move to default pos
+            self.bPawn3.base = transl([xPosMatrix(3),yPosMatrix(7),0]); % Move to default pos
             self.MovebPawn3(self.bPawn3.getpos);
                 
                 % Black Pawn 4
@@ -294,7 +294,7 @@ classdef ChessScenario2 < handle
                 camlight
             end
             self.bPawn4.delay = 0;
-            self.bPawn4.base = transl([xPos(4),yPos(7),0]); % Move to default pos
+            self.bPawn4.base = transl([xPosMatrix(4),yPosMatrix(7),0]); % Move to default pos
             self.MovebPawn4(self.bPawn4.getpos);    
             
                 % Black Pawn 5
@@ -303,7 +303,7 @@ classdef ChessScenario2 < handle
                 camlight
             end
             self.bPawn5.delay = 0;
-            self.bPawn5.base = transl([xPos(5),yPos(7),0]); % Move to default pos
+            self.bPawn5.base = transl([xPosMatrix(5),yPosMatrix(7),0]); % Move to default pos
             self.MovebPawn5(self.bPawn5.getpos);
                 
                 % Black Pawn 6
@@ -312,7 +312,7 @@ classdef ChessScenario2 < handle
                 camlight
             end
             self.bPawn6.delay = 0;
-            self.bPawn6.base = transl([xPos(6),yPos(7),0]); % Move to default pos
+            self.bPawn6.base = transl([xPosMatrix(6),yPosMatrix(7),0]); % Move to default pos
             self.MovebPawn6(self.bPawn6.getpos);    
                 
                 % Black Pawn 7
@@ -321,7 +321,7 @@ classdef ChessScenario2 < handle
                 camlight
             end
             self.bPawn7.delay = 0;
-            self.bPawn7.base = transl([xPos(7),yPos(7),0]); % Move to default pos
+            self.bPawn7.base = transl([xPosMatrix(7),yPosMatrix(7),0]); % Move to default pos
             self.MovebPawn7(self.bPawn7.getpos);
                 
                 % Black Pawn 8
@@ -330,7 +330,7 @@ classdef ChessScenario2 < handle
                 camlight
             end
             self.bPawn8.delay = 0;
-            self.bPawn8.base = transl([xPos(8),yPos(7),0]); % Move to default pos
+            self.bPawn8.base = transl([xPosMatrix(8),yPosMatrix(7),0]); % Move to default pos
             self.MovebPawn8(self.bPawn8.getpos);  
             
             
@@ -362,7 +362,7 @@ classdef ChessScenario2 < handle
                 camlight
             end
             self.wRook1.delay = 0;
-            self.wRook1.base = transl([xPos(1),yPos(1),0]); % Move to default pos
+            self.wRook1.base = transl([xPosMatrix(1),yPosMatrix(1),0]); % Move to default pos
             self.MovewRook1(self.wRook1.getpos);
             
                 % Black Rook 1
@@ -371,7 +371,7 @@ classdef ChessScenario2 < handle
                 camlight
             end
             self.bRook1.delay = 0;
-            self.bRook1.base = transl([xPos(1),yPos(8),0]); % Move to default pos
+            self.bRook1.base = transl([xPosMatrix(1),yPosMatrix(8),0]); % Move to default pos
             self.MovebRook1(self.bRook1.getpos);
 
                 % White Rook 2
@@ -380,7 +380,7 @@ classdef ChessScenario2 < handle
                 camlight
             end
             self.wRook2.delay = 0;
-            self.wRook2.base = transl([xPos(8),yPos(1),0]); % Move to default pos
+            self.wRook2.base = transl([xPosMatrix(8),yPosMatrix(1),0]); % Move to default pos
             self.MovewRook2(self.wRook2.getpos); 
 
                 % Black Rook 2
@@ -389,7 +389,7 @@ classdef ChessScenario2 < handle
                 camlight
             end
             self.bRook2.delay = 0;
-            self.bRook2.base = transl([xPos(8),yPos(8),0]); % Move to default pos
+            self.bRook2.base = transl([xPosMatrix(8),yPosMatrix(8),0]); % Move to default pos
             self.MovebRook2(self.bRook2.getpos);
             
             % Bishops
@@ -420,7 +420,7 @@ classdef ChessScenario2 < handle
                 camlight
             end
             self.wBishop1.delay = 0;
-            self.wBishop1.base = transl([xPos(3),yPos(1),0]); % Move to default pos
+            self.wBishop1.base = transl([xPosMatrix(3),yPosMatrix(1),0]); % Move to default pos
             self.MovewBishop1(self.wBishop1.getpos);
             
                 % Black Bishop 1
@@ -429,7 +429,7 @@ classdef ChessScenario2 < handle
                 camlight
             end
             self.bBishop1.delay = 0;
-            self.bBishop1.base = transl([xPos(3),yPos(8),0]); % Move to default pos
+            self.bBishop1.base = transl([xPosMatrix(3),yPosMatrix(8),0]); % Move to default pos
             self.MovebBishop1(self.bBishop1.getpos);
 
                 % White Bishop 2
@@ -438,7 +438,7 @@ classdef ChessScenario2 < handle
                 camlight
             end
             self.wBishop2.delay = 0;
-            self.wBishop2.base = transl([xPos(6),yPos(1),0]); % Move to default pos
+            self.wBishop2.base = transl([xPosMatrix(6),yPosMatrix(1),0]); % Move to default pos
             self.MovewBishop2(self.wBishop2.getpos); 
 
                 % Black Bishop 2
@@ -447,7 +447,7 @@ classdef ChessScenario2 < handle
                 camlight
             end
             self.bBishop2.delay = 0;
-            self.bBishop2.base = transl([xPos(6),yPos(8),0]); % Move to default pos
+            self.bBishop2.base = transl([xPosMatrix(6),yPosMatrix(8),0]); % Move to default pos
             self.MovebBishop2(self.bBishop2.getpos);
             
             % Knights
@@ -478,7 +478,7 @@ classdef ChessScenario2 < handle
                 camlight
             end
             self.wKnight1.delay = 0;
-            self.wKnight1.base = transl([xPos(2),yPos(1),0]); % Move to default pos
+            self.wKnight1.base = transl([xPosMatrix(2),yPosMatrix(1),0]); % Move to default pos
             self.MovewKnight1(self.wKnight1.getpos);
             
                 % Black Knight 1
@@ -487,7 +487,7 @@ classdef ChessScenario2 < handle
                 camlight
             end
             self.bKnight1.delay = 0;
-            self.bKnight1.base = transl([xPos(2),yPos(8),0]); % Move to default pos
+            self.bKnight1.base = transl([xPosMatrix(2),yPosMatrix(8),0]); % Move to default pos
             self.MovebKnight1(self.bKnight1.getpos);
 
                 % White Knight 2
@@ -496,7 +496,7 @@ classdef ChessScenario2 < handle
                 camlight
             end
             self.wKnight2.delay = 0;
-            self.wKnight2.base = transl([xPos(7),yPos(1),0]); % Move to default pos
+            self.wKnight2.base = transl([xPosMatrix(7),yPosMatrix(1),0]); % Move to default pos
             self.MovewKnight2(self.wKnight2.getpos); 
 
                 % Black Knight 2
@@ -505,7 +505,7 @@ classdef ChessScenario2 < handle
                 camlight
             end
             self.bKnight2.delay = 0;
-            self.bKnight2.base = transl([xPos(7),yPos(8),0]); % Move to default pos
+            self.bKnight2.base = transl([xPosMatrix(7),yPosMatrix(8),0]); % Move to default pos
             self.MovebKnight2(self.bKnight2.getpos);
             
             %Queens
@@ -525,7 +525,7 @@ classdef ChessScenario2 < handle
                 camlight
             end
             self.wQueen1.delay = 0;
-            self.wQueen1.base = transl([xPos(4),yPos(1),0]); % Move to default pos
+            self.wQueen1.base = transl([xPosMatrix(4),yPosMatrix(1),0]); % Move to default pos
             self.MovewQueen1(self.wQueen1.getpos);
 
             self.bQueen1.plot3d(zeros(1,self.bQueen1.n),'noarrow','workspace',self.workspace);
@@ -533,7 +533,7 @@ classdef ChessScenario2 < handle
                 camlight
             end
             self.bQueen1.delay = 0;
-            self.bQueen1.base = transl([xPos(4),yPos(8),0]); % Move to default pos
+            self.bQueen1.base = transl([xPosMatrix(4),yPosMatrix(8),0]); % Move to default pos
             self.MovebQueen1(self.bQueen1.getpos);    
             
             % Kings
@@ -553,7 +553,7 @@ classdef ChessScenario2 < handle
                 camlight
             end
             self.bKing.delay = 0;
-            self.bKing.base = transl([xPos(5),yPos(8),0]); % Move to default pos
+            self.bKing.base = transl([xPosMatrix(5),yPosMatrix(8),0]); % Move to default pos
             self.MovebKing(self.bKing.getpos); 
 
             self.wKing.plot3d(zeros(1,self.wKing.n),'noarrow','workspace',self.workspace);
@@ -561,7 +561,7 @@ classdef ChessScenario2 < handle
                 camlight
             end
             self.wKing.delay = 0;
-            self.wKing.base = transl([xPos(5),yPos(1),0]); % Move to default pos
+            self.wKing.base = transl([xPosMatrix(5),yPosMatrix(1),0]); % Move to default pos
             self.MovewKing(self.wKing.getpos); 
 
             

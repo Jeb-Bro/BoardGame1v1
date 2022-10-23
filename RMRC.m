@@ -4,7 +4,7 @@ function RMRC(robot,endPose,steps)
     % robot
     % poseFinal: desired final pose
     % steps
-
+    EStopCheck(ChessGUI)
     timestep = 0.05; % Discrete timestep
      
     % current pose + pose to go to

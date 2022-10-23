@@ -69,14 +69,20 @@ i5bot.model.base = transl([0.4,-0.3,-0.03]);
 i5bot.MoveRobot(i5bot.model.getpos);
 % i5bot.model.teach;
 
-%% GUI Start
-
-ChessGUI = Chess_GUI();
+% blackbishop translate base
+% piece_Type = 'bBishop';
+% piece_pose = transl([xPosMatrix(3), yPosMatrix(1),0]);
+% piece_Color = [0,0,0]/255;
+% blackbishop = blackbish([piece_Type,'.ply'],piece_pose,piece_Color);
 
 %% Change workplace view 
 xlim([-1.5 1.5]);
 ylim([-1.5 1.5]);
 zlim([-0.65 1]);
+
+%% GUI Start
+
+% ChessGUI = Chess_GUI;
 
 %% UR5 Scenarios
 % Scenario1 = ChessScenario1;
@@ -84,31 +90,20 @@ zlim([-0.65 1]);
 % Default Joint states
 UR5jd= [90 0 90 0 -90 0 0]*pi/180;
 i5jd = [-90 0 90 0 -90 0 0]*pi/180;
-steps = 25;
+steps = 50;
 
+while(1)
 Scenario = 1;
-EStopCheck(ChessGUI)
+
 switch Scenario
     case 1
         Scenario1 = ChessScenario1
         ChessScenario1_Moves
-        go = go+1;
     case 2
         Scenario2 = ChessScenario2
         ChessScenario2_Moves
-        go = go+1;
     case 3
         Scenario3 = ChessScenario1
         ChessScenario3_Moves
-        go = go+1;
 end
-
-
-%% Check estop status
-function EStopCheck(ChessGUI)
-    while ChessGUI.ESTOPButton.Value == 0
-        if ChessGUI.ESTOPButton.Value == 1
-            break;
-        end
-    end
 end

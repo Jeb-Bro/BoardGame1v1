@@ -209,6 +209,7 @@ classdef ChessScenario1 < handle
         function MovewKing(self,qTrajectory)
             for i=1:numrows(qTrajectory)
                 self.wKing.animate(qTrajectory(i,:));
+                
                 drawnow()
             end
         end       

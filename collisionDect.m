@@ -9,7 +9,7 @@
 
 mdl_planar3;
 p3.base = transl([0,-2.5,0.5]);
-scale =0.5;
+scale =0.4;
 
 %%%%%%%%%%% input required below
 [v,f,fn] = RectangularPrism([-1,-0.55,0], [1,0.55,0.5]);

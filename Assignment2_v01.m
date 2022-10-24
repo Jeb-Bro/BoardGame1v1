@@ -29,7 +29,6 @@
 % pause;
 
 %% Setup
-tic
 
 clc;
 clf;
@@ -73,7 +72,7 @@ clear all;
 
 %% GUI Start
 
-% ChessGUI = Chess_GUI;
+ChessGUI = Chess_GUI;
 
 %% Change workplace view 
 % xlim([-1.5 1.5]);
@@ -104,5 +103,3 @@ clear all;
 %         ChessScenario3_Moves
 % 
 % end
-
-timeElasped = toc/60;

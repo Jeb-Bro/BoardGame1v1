@@ -1,66 +1,80 @@
 %% Simulation Models
 % Place both Chessboard models on (x,y,z) = (0,0,tableHeight)
+camlight
+
+hold on
+
 squareSize = 0.0375;
 height = 2.2737*10^-14;
-tableHeight = 0
+tableHeight = 0.65-0.004928;
 PlaceObject('chessBoardLight.ply', [0,0,tableHeight]);
 PlaceObject('chessBoardDark.ply', [0,0,tableHeight]);
     
 %% Chess Pos Matrix
-xPosMatrix = zeros(8,1)
-yPosMatrix = zeros(8,1)
+xPosMatrix = zeros(8,1);
+yPosMatrix = zeros(8,1);
 
     for j = 1
         for i = -7:2:7
-        xPosMatrix(j) = i*squareSize*0.5
-        yPosMatrix(j) = i*squareSize*0.5
+        xPosMatrix(j) = i*squareSize*0.5;
+        yPosMatrix(j) = i*squareSize*0.5;
         j = j+1;
         end
     end
+    
+zOnChessboard = height + tableHeight;
+zOffChessboard = tableHeight;
     
     
     %% Improved Placement Code
 for i = 1:8
     
     % Pawns
-    PlaceObject('wPawn.ply', [xPosMatrix(i), yPosMatrix(2), height+tableHeight])
-    PlaceObject('bPawn.ply', [xPosMatrix(i), yPosMatrix(7), height+tableHeight])
+% wPawn = PlaceObject('wPawn.ply', [xPos(i), yPos(2),zOnChessboard]);
+
+%% White Pawn Placement Test Code   
+    wPawn(i) = whitePawn;
+    wPawn(i).model.base = transl([xPos(i),yPos(2),zOnChessboard]); %* trotz(pi);
+    wPawn(1,i).model.plot(0.046, 'noarrow', 'nobase', 'nojoints', 'notiles', 'nowrist')
+
+    bPawn = PlaceObject('bPawn.ply', [xPos(i), yPos(7),zOnChessboard]);
+    
     
     % Rooks
     if i == 1 || i == 8
-        PlaceObject('wRook.ply', [xPosMatrix(i), yPosMatrix(1), height+tableHeight])
-        PlaceObject('bRook.ply', [xPosMatrix(i), yPosMatrix(8), height+tableHeight])
+        wRook = PlaceObject('wRook.ply', [xPos(i), yPos(1), zOnChessboard]);
+        bRook = PlaceObject('bRook.ply', [xPos(i), yPos(8), zOnChessboard]);
     end
     
     % Knights
     if i == 2 || i == 7
-        PlaceObject('wKnight.ply', [xPosMatrix(i), yPosMatrix(1), height+tableHeight])
-        PlaceObject('bKnight.ply', [xPosMatrix(i), yPosMatrix(8), height+tableHeight]) 
+        wKnight = PlaceObject('wKnight.ply', [xPos(i), yPos(1), zOnChessboard]);
+        bKnight = PlaceObject('bKnight.ply', [xPos(i), yPos(8), zOnChessboard]);
     end
     
     % Bishops
     if i == 3 || i == 6
-        PlaceObject('wBishop.ply', [xPosMatrix(i), yPosMatrix(1), height+tableHeight])
-        PlaceObject('bBishop.ply', [xPosMatrix(i), yPosMatrix(8), height+tableHeight]) 
+        wBishop = PlaceObject('wBishop.ply', [xPos(i), yPos(1), zOnChessboard]);
+        bBishop = PlaceObject('bBishop.ply', [xPos(i), yPos(8), zOnChessboard]); 
     end
     
     % Queens
     if i == 4
-        PlaceObject('wQueen.ply', [xPosMatrix(i), yPosMatrix(1), height+tableHeight])
-        PlaceObject('bQueen.ply', [xPosMatrix(i), yPosMatrix(8), height+tableHeight]) 
+        wQueen = PlaceObject('wQueen.ply', [xPos(i), yPos(1), zOnChessboard]);
+        bQueen = PlaceObject('bQueen.ply', [xPos(i), yPos(8), zOnChessboard]); 
     end
 
     % Kings
     if i == 5
-        PlaceObject('wKing.ply', [xPosMatrix(i), yPosMatrix(1), height+tableHeight])
-        PlaceObject('bKing.ply', [xPosMatrix(i), yPosMatrix(8), height+tableHeight]) 
+        wKing = PlaceObject('wKing.ply', [xPos(i), yPos(1), zOnChessboard]);
+        bKing = PlaceObject('bKing.ply', [xPos(i), yPos(8), zOnChessboard]);
     end
     
 
 end
 
 %% Table
-PlaceObject('table.ply',[0,0,-0.65]);
+PlaceObject('table.ply',[0,0,0]);
 
 %% Extinguisher
 % PlaceObject('FireExtingusher.ply',[0,0,0]);

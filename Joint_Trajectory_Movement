@@ -1,0 +1,66 @@
+%% Movement Setup
+
+steps = 100
+AUBOi5.model.delay = 0.01;
+UR5.model.delay = 0.01;
+view(0, 60)
+
+%% White Move 1
+
+W_srt = AUBOi5.model.getpos;
+W_mid = AUBOi5.model.ikine(transl(xPos(6), yPos(2), zOnChessboard+0.1), W_srt, [1, 1, 1, 1, 0, 1]);
+W_end = AUBOi5.model.ikine(transl(xPos(6), yPos(3), zOnChessboard+0.1), W_mid, [1, 1, 1, 1, 0, 1]);
+
+q_i5 = AUBOi5.model.fkine(W_mid);
+
+
+W_srt_traj = jtraj(W_srt, W_mid, steps);
+W_mid_traj = jtraj(W_mid, W_end, steps);
+W_end_traj = jtraj(W_end, W_srt, steps);
+
+
+
+for i = 1:steps
+    AUBOi5.model.animate(W_srt_traj(i,:));
+    drawnow();
+end
+
+for j = 1:steps
+    AUBOi5.model.animate(W_mid_traj(j,:));
+    drawnow();
+end
+
+for k = 1:steps
+    AUBOi5.model.animate(W_end_traj(k,:));
+    drawnow();
+end
+
+%% Black Move 1
+
+B_srt = UR5.model.getpos;
+B_mid = UR5.model.ikine(transl(xPos(5), yPos(7), zOnChessboard+0.1), B_srt, [1, 1, 1, 0, 1, 1]);
+B_end = UR5.model.ikine(transl(xPos(5), yPos(5), zOnChessboard+0.1), B_mid, [1, 1, 1, 0, 1, 1]);
+
+q_UR5 = UR5.model.fkine(B_mid);
+
+
+B_srt_traj = jtraj(B_srt, B_mid, steps);
+B_mid_traj = jtraj(B_mid, B_end, steps);
+B_end_traj = jtraj(B_end, B_srt, steps);
+
+
+
+for i = 1:steps
+    UR5.model.animate(B_srt_traj(i,:));
+    drawnow();
+end
+
+for j = 1:steps
+    UR5.model.animate(B_mid_traj(j,:));
+    drawnow();
+end
+
+for k = 1:steps
+    UR5.model.animate(B_end_traj(k,:));
+    drawnow();
+end

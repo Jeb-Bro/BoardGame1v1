@@ -1,12 +1,12 @@
-function JointLim = JointCheck(robot,q)
+function JointLim = JointCheck(robot,qlim)
     jointlim = robot.qlim;
     
-    for x = 1:robot.n
-        JointLim  = x;
-        if q(x) < jointlim(x,1) || jointlim(x,2) < q(x)
+    for q = 1:robot.n
+        JointLim  = q;
+        if  jointlim(q,1) > qlim(q) || jointlim(q,2) < qlim(q)
             return
         end
     end
 
-    JointLim = x+1;
+    JointLim = q+1;
 end

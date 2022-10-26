@@ -44,7 +44,7 @@ UR5jd= [90 0 90 0 -90 0 0]*pi/180;
 i5jd = [-90 0 90 0 -90 0 0]*pi/180;
 steps = 30;
 
-Scenario = 3;
+Scenario = 1;
 % EStopCheck(ChessGUI.ESTOPButton.Value)
 switch Scenario
     case 1

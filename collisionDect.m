@@ -1,11 +1,4 @@
 %% Get rectangularPrism and IsCollision
-% clear
-% close all
-% clc
-% set(0,'DefaultFigureWindowStyle','docked')
-% view (3)
-% axis equal
-% camlight
 
 mdl_planar3;
 p3.base = transl([0,-2.5,0.5]);
